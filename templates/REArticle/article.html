@@ -1,0 +1,93 @@
+{% extends "index.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+科研管理系统
+{% endblock %}
+
+
+{#传输给index的content部分#}
+{% block content %}
+<div class="jumbotron text-center" style="margin-bottom:0">
+
+  <h1 class="welco">欢迎访问科研管理系统</h1>
+  <p class="intro">成就未来 就在今日</p>
+    {% if user.is_authenticated %}
+    <button type="button" class="btn btn-success"><a href="{% url 'manage' %}">进入系统</a></button>
+    {% else %}
+    <button type="button" class="btn btn-success"><a href="{% url 'userLogin' %}">进入系统</a></button>
+    {% endif %}
+    <button type="button" class="btn btn-default"><a href="{% url 'userRegister' %}">注册</a></button>
+</div>
+
+{#循环打印出论文的表格#}
+<div class="row">
+{#<div class="text-center"> 用来将表格中数据居中对齐#}
+
+<div class="col-md-1 column">
+</div>
+<div class="col-md-10 column">
+<table class="table">
+    <h1 class="text-center">最新论文</h1>
+	<thead>
+    <tr>
+    <th>论文名称</th>
+    <th>作者</th>
+    <th>所属学院</th>
+    <th>级别</th></tr>
+    </thead>
+    <tbody>
+        {% for article in articles %}
+            <tr class="active">
+            <td><a href="{{ article.id }}">{{ article.Rtitle }}</a></td>
+            <td>{{ article.Rauthor }}</td>
+            <td>{{ article.Rinstitution }}</td>
+            <td>{{ article.Rrank }}</td></tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+</div>
+<div class="col-md-1 column">
+</div>
+{#</div>#}
+</div>
+
+<div class="row clearfix">
+        <h1 class="text-center">功能齐全</h1>
+	    <div class="col-md-4 column text-center">
+            <img src="{% static 'img/wallhaven-713411.jpg' %}" width="300px" height="100px" class="img-responsive center-block img-rounded">
+				<div class="caption">
+					<h3>
+						科研管理
+					</h3>
+					<p>
+						除了增删改查啥也没有
+					</p>
+                </div>
+		</div>
+		<div class="col-md-4 column text-center">
+            <img src="{% static 'img/wallhaven-703382.jpg' %}" width="300px" height="100px" class="img-responsive center-block img-rounded">
+				<div class="caption">
+					<h3>
+						科研基金
+					</h3>
+					<p>
+						没钱搞个屁科研
+					</p>
+				</div>
+		</div>
+		<div class="col-md-4 column text-center">
+            <img src="{% static 'img/wallhaven-702818.jpg' %}" width="300px" height="100px" class="img-responsive center-block img-rounded">
+				<div class="caption">
+					<h3>
+						人员福利
+					</h3>
+					<p>
+						没有对象就自己实例化
+					</p>
+				</div>
+		</div>
+	</div>
+{% endblock %}

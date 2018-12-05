@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+登录你的账户
+{% endblock %}
+
+{% block content %}
+    <div class="row text-center vertical-middle-sm">
+    <h2>Login</h2>
+    <p>Input Your Username And Password</p>
+    <form class="form-horizontal" action="." role="form" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}" class="col-md-5 custom-control-label text-right" style="color:forestgreen">
+                <span class="glyphicon glyphicon-user">&nbsp;用户名</span>
+            </label>
+            <div class="col-md-6 text-left">{{ form.username }}</div>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.password.id_for_label }}" class="col-md-5 custom-control-label text-right" style="color:forestgreen">
+                <span class="glyphicon glyphicon-pencil">&nbsp;密码</span>
+            </label>
+            <div class="col-md-6 text-left"> {{ form.password }}</div>
+        </div>
+        <input type="submit" class="btn btn-success btn-lg " value="Login">
+    </form>
+    </div>
+{% endblock %}

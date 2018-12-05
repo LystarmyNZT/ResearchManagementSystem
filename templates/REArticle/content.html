@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+详情页
+{% endblock %}
+
+{% block content %}
+    <h1>{{ article.Rtitle }}</h1>
+    <h4>{{ article.Rauthor }}</h4>
+    <hr>
+    <p>{{ article.Rintroduction }}</p>
+{% endblock %}

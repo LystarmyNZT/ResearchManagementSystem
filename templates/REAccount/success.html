@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+登录/注册成功
+{% endblock %}
+
+{% block content %}
+    <h3>登陆成功 转向<a href="{% url 'Article' %}" >主页面</a></h3>
+{% endblock %}

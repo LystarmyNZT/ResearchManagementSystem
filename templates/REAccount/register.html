@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+注册你的账户
+{% endblock %}
+
+{% block content %}
+    <div class="row text-center vertical-middle-sm">
+    <h2>Register</h2>
+    <p>Input Your Username、email And your Password</p>
+    <form class="form-horizontal" action="." role="form" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}" class="col-md-5 custom-control-label text-right" style="color:forestgreen">
+                <span class="glyphicon glyphicon-user">&nbsp;用户名</span>
+            </label>
+            <div class="col-md-6 text-left">{{ form.username }}</div>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}" class="col-md-5 custom-control-label text-right" style="color:forestgreen">
+                <span class="glyphicon glyphicon-th-large">&nbsp;邮箱</span>
+            </label>
+            <div class="col-md-6 text-left">{{ form.email }}</div>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.password.id_for_label }}" class="col-md-5 custom-control-label text-right" style="color:forestgreen">
+                <span class="glyphicon glyphicon-pencil">&nbsp;密码</span>
+            </label>
+            <div class="col-md-6 text-left">{{ form.password }}</div>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.password2.id_for_label }}" class="col-md-5 custom-control-label text-right" style="color:forestgreen">
+                <span class="glyphicon glyphicon-pencil">&nbsp;确认密码</span>
+            </label>
+            <div class="col-md-6 text-left"> {{ form.password2 }}</div>
+        </div>
+        <input type="submit" class="btn btn-success btn-lg " value="REGISTER">
+    </form>
+    </div>
+{% endblock %}
